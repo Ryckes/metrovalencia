@@ -1,0 +1,117 @@
+
+$main-color: #D30006;
+
+body {
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    width: 350px;
+    overflow-x: hidden;
+}
+
+label span, #arrivalOrDeparture {
+    display: inline-block;
+    width: 140px;
+}
+
+select {
+    background-color: #EEEEEE;
+    border: 1px solid black;
+    padding: 2px;
+    text-align: center;
+    width: 200px;
+}
+
+#arrivalOrDeparture {
+    float: left;
+}
+
+#dateInput, #timeInput {
+    border: 1px solid black;
+    padding: 2px;
+    text-align: center;
+    width: 160px;
+}
+
+.dateModifier, .timeModifier {
+    background-color: #EEEEEE;
+    border: 1px solid black;
+    margin: 0;
+    text-align: center;
+    margin-left: 2px;
+    padding: 2px;
+    width: 18px;
+
+    &:hover {
+        background-color: $main-color;
+        color: #FFFFFF;
+    }
+}
+
+#timeInputContainer, #dateInputContainer {
+    float: right;
+}
+
+#inputContainer {
+    overflow: auto;
+    width: 100%;
+}
+
+#submitForm {
+    background-color: #EEEEEE;
+    border: 1px solid black;
+    display: block;
+    margin: auto;
+    width: 100px;
+
+    &:hover {
+        background-color: $main-color;
+        color: #FFFFFF;
+    }
+}
+
+.step {
+    border-left: 2px solid black;
+    padding-left: 5px;
+}
+
+.findAnotherTrainButton {
+    border: 1px solid black;
+    background-color: $main-color;
+    color: #FFFFFF;
+    margin: 3px;
+    margin-bottom: 6px;
+}
+
+#history {
+    display: none;
+    margin: 10px;
+    margin-top: 40px;
+}
+
+#historyHeader {
+    border: 1px solid #000000;
+    font-size: 1.1em;
+    margin: 2px;
+    padding: 6px;
+    text-align: center;
+}
+
+#history > ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#history a {
+    background-color: $main-color;
+    border: 1px solid $main-color;
+    color: #FFFFFF;
+    display: block;
+    margin: 2px;
+    padding: 6px;
+    text-decoration: none;
+
+    &:hover {
+        background-color: #FFFFFF;
+        color: $main-color;
+    }
+}

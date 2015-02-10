@@ -1,0 +1,48 @@
+<html>
+    <head>
+        
+        <title>Opciones Calculadora Metrovalencia (no oficial)</title>
+
+        <link rel="stylesheet" href="/styles/built/options.css" />
+    </head>
+    <body>
+        
+        <div class="center"><h1>Desmarca las paradas de metro que no uses</h1></div>
+        
+        <p class="center">Las paradas desmarcadas no aparecer&aacute;n en la lista de paradas de origen o de destino. Los cambios no se har&aacute;n efectivos hasta que pulse el bot&oacute;n &quot;Guardar cambios&quot;.</p>
+        
+        <div id="stationCheckboxesContainer"></div>
+        
+        <p class="center">
+      Parada de origen por defecto:
+            <select id="fromFavSelect"></select>
+        </p>
+        
+        <p class="center">
+      Parada de destino por defecto:
+            <select id="toFavSelect"></select>
+        </p>
+
+        <div class="center" id="statusOutput"></div>
+        <br />
+        
+        <div class="buttonContainer">
+            <input type="button" value="Marcar todas" id="checkAllButton" /><input type="button" value="Desmarcar todas" id="uncheckAllButton" />
+        </div>
+        
+        <br />
+
+        <p class="center">
+            Tiempo m&iacute;nimo entre trenes (tiempo necesario para hacer un transbordo):
+            <input type="range" min="0" max="20" id="minimumConnectionTimeInput" />
+            <span id="minimumConnectionTimeText"><span id="minimumConnectionTimeDisplay"></span> minutos</span>
+        </p>
+        
+        <div class="buttonContainer">
+            <input type="button" value="Cancelar" id="cancelButton" /><input type="button" value="Guardar cambios" id="saveButton" />
+        </div>		
+        
+        <script type="text/javascript" src="/js/jquery.js"></script>
+        <script type="text/javascript" src="/js/bundled/options.js"></script>
+    </body>
+</html>

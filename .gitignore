@@ -1,0 +1,5 @@
+node_modules
+.sass-cache
+extension/js/bundled
+extension/styles/built
+/coverage

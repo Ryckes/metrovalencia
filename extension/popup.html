@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bundled/popup.js"></script>
+        <link rel="stylesheet" type="text/css" href="styles/built/styles.css" />
+    </head>
+    <body>
+        <div class="form">
+            <label>
+	        <span>De:</span>
+	        <select id="fromStation"></select>
+            </label>
+            <br />
+            <label>
+	        <span>A:</span>
+	        <select id="toStation">
+            </label>
+                </select>
+                <br />
+                <br />
+                <div id="inputContainer">
+                    <select id="arrivalOrDeparture">
+	                <option value="arrival">Quiero llegar a las</option>
+	                <option value="departure">Quiero salir a las</option>
+                    </select>
+                    <div id="timeInputContainer">
+                        <input type="text" id="timeInput" /><button id="increaseTimeButton" class="timeModifier">+</button><button id="decreaseTimeButton" class="timeModifier">-</button>
+                    </div>
+                    <div id="dateInputContainer">
+                        <input type="text" id="dateInput" /><button id="increaseDateButton" class="dateModifier">+</button><button id="decreaseDateButton" class="dateModifier">-</button>
+                    </div>
+                </div>
+                <br />
+                <input type="button" id="submitForm" value="Calcular" />
+        </div>
+        <br />
+        <div id="formOutput"></div>
+        <div id="history">
+            <div id="historyHeader">Últimos trayectos encontrados</div>
+	    <ul></ul>
+        </div>
+    </body>
+</html>
