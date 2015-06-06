@@ -158,7 +158,6 @@
     }
 
     function addHistoryEntry(entry) {
-        console.log('adding');
         var from = entry[0].departureStation;
         var to = entry[entry.length-1].arrivalStation;
 
