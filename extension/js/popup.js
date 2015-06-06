@@ -90,23 +90,23 @@
             .then(function(stations) {
                 var fromFav, toFav;
                 
-	        for(var station in stations) {
+	            for(var station in stations) {
                     if(!stations.hasOwnProperty(station)) continue;
                     
                     var stationIsEnabled = !stations[station].disabled,
                         stationIdentifier = stations[station].i,
                         stationName = stations[station].n;
 
-	            if(stations.hasOwnProperty(station) && stationIsEnabled) {
+	                if(stations.hasOwnProperty(station) && stationIsEnabled) {
                         view.addStationOption(stationIdentifier, stationName);
 
-		        if(stations[station].fromFav)
-		            fromFav = stationIdentifier;
+		                if(stations[station].fromFav)
+		                    fromFav = stationIdentifier;
 
-		        if(stations[station].toFav)
-		            toFav = stationIdentifier;
+		                if(stations[station].toFav)
+		                    toFav = stationIdentifier;
+	                }
 	            }
-	        }
 
                 if(fromFav)
                     view.selectOriginStation(fromFav);
