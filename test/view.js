@@ -8,14 +8,12 @@ suite('View', function() {
         DOMParser = require('xmldom').DOMParser;
 
     var view = require('../extension/js/popup-view');
+    var timeFunctions = require('../extension/js/timefunctions.js');
 
-    var timeFunctionsMock,
-        documentMock;
+    var documentMock;
 
     setup(function() {
 
-        timeFunctionsMock = {};
-        
         documentMock = {
             addToHistoryList: function() {}
         };
@@ -23,7 +21,7 @@ suite('View', function() {
     });
 
     function mockDependencies() {
-        view.initialize(timeFunctionsMock, documentMock);
+        view.initialize(timeFunctions, documentMock);
     }
 
     suite('.renderHistoryEntry()', function() {
@@ -32,12 +30,17 @@ suite('View', function() {
             // Arrange
             var entry = [{
                 departureStation: 'Here',
-                arrivalStation: 'There'
+                departureDate: new Date(),
+                arrivalStation: 'There',
+                arrivalDate: new Date()
             }];
             entry.id = 5;
+            
             documentMock.addToHistoryList = function(entry) {
                 var parser = new DOMParser();
                 var dom = parser.parseFromString(entry);
+                
+                // Assert
                 assert.equal(dom.getElementsByTagName('a')[0].getAttribute('data-id'), 5);
                 done();
             };
@@ -45,9 +48,47 @@ suite('View', function() {
             
             // Act
             view.addHistoryEntry(entry);
+        });
+
+        test('should show the right time range in each history entry', function(done) {
+            // Arrange
+            var entry = [{
+                departureStation: 'Here',
+                departureDate: new Date(),
+                arrivalStation: 'There',
+                arrivalDate: new Date(new Date().getTime() + 253000),
+                time: new Date()
+            }];
+
+            var timeStr = timeFunctions.getTimeString(entry[0].departureDate) + '-' + timeFunctions.getTimeString(entry[entry.length-1].arrivalDate);
+            
+            documentMock.addToHistoryList = function(entry) {
+                var parser = new DOMParser();
+                var dom = parser.parseFromString(entry);
+                var innerText = dom.getElementsByTagName('a')[0].childNodes[0].nodeValue;
+                
+                // Assert
+                assert.include(innerText, timeStr);
+                done();
+            };
+            mockDependencies();
+            
+            // Act
+            view.addHistoryEntry(entry);
+        });
+
+        test('should throw an error if no time is provided for the first entry', function() {
+            // Arrange
+            var entry = [{
+                departureStation: 'Here',
+                arrivalStation: 'There'
+            }];
             
             // Assert
-            
+            assert.throws(function() {
+                // Act
+                view.addHistoryEntry(entry);
+            }, Error);
         });
 
     });

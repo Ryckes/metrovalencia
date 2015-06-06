@@ -83,7 +83,6 @@
     };
 
     exports.start = function(){
-
         view.initializeForm();
 
         fetchStationsModule.fetchStations()

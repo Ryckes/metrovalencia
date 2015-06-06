@@ -158,9 +158,13 @@
     }
 
     function addHistoryEntry(entry) {
+        console.log('adding');
         var from = entry[0].departureStation;
         var to = entry[entry.length-1].arrivalStation;
-        document.addToHistoryList('<li><a data-id="' + entry.id + '" href="">' + from + ' - ' + to + '</a></li>');
+
+        var timeString = timeFunctions.getTimeString(entry[0].departureDate) + '-' + timeFunctions.getTimeString(entry[entry.length-1].arrivalDate);
+
+        document.addToHistoryList('<li><a data-id="' + entry.id + '" href="">' + from + ' - ' + to + ' (' + timeString + ')' + '</a></li>');
     }
 
     function onHistoryEntryClick(cb) {
