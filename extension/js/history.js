@@ -100,8 +100,20 @@
             }
 
             nextKey = obj.history.nextKey++;
-            
             obj.history[nextKey] = toBeStored;
+
+            var excess = obj.history.nextKey - 3;
+            if (excess > 0) {
+                obj.history.nextKey = 3;
+                for (var i = 0; i < obj.history.nextKey; i++) {
+                    obj.history[i] = obj.history[i + excess];
+                }
+                for (var j = obj.history.nextKey;
+                     j < obj.history.nextKey + excess;
+                     j++) {
+                    delete obj.history[j];
+                }
+            }
 
             storage.set(obj);
         });

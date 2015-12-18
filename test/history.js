@@ -14,7 +14,7 @@ suite('History', function() {
             arrivalDate: new Date(),
             arrivalStation: 'Wherever',
             departureDate: new Date(20000),
-            departurestation: num
+            departureStation: num
         };
     }
 
@@ -131,7 +131,34 @@ suite('History', function() {
             // Assert
             
         });
-        
+
+        test('should store only the three most recent entries', function(done) {
+            // Arrange
+            var entry = getFakeTrip();
+            history.initialize(storageMock);
+
+            // Act
+            for (var i = 0; i < 5; i++) {
+                entry[0].departureStation = i;
+                history.store(entry);
+            }
+
+            storageMock.get('history', function(mem) {
+                assert.isBelow(mem.history.nextKey, 4,
+                               'More than 3 entries are stored in history');
+                for (var i = 0; i < mem.history.nextKey; i++) {
+                    // Referencing .setup here voids encapsulation in
+                    // this test Another option is to use
+                    // history.getLast(), but I'd rather test just
+                    // store() method here
+                    assert.isAbove(mem.history[i].setup[0].departureStation, 1,
+                                    'The oldest entry is stored in lieu of' +
+                                    ' one of the most recent entries');
+                }
+
+                done();
+            });
+        });
     });
 
     suite('.getLast()', function() {
