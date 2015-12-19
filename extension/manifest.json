@@ -4,7 +4,7 @@
     "name": "Calculadora Metrovalencia (no oficial)",
     "short_name": "Calculadora Metrovalencia (no oficial)",
     "description": "Calculadora de horarios del metro en Valencia. (no oficial)",
-    "version": "0.8.0",
+    "version": "0.8.1",
     
     "permissions": [
 	    "storage",
