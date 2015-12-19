@@ -3,3 +3,4 @@ node_modules
 extension/js/bundled
 extension/styles/built
 /coverage
+*.zip
